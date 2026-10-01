@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Our Little World 💖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Lilita+One&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--pk:#ff6fa5;--pu:#8e5cf0;--pe:#ffb38a;--rd:#ff4d6d;--sk:#6ec8ff;--yl:#ffe27a;--ink:#3b1f4d}
+*{box-sizing:border-box;margin:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{position:relative;font-family:Nunito,"Trebuchet MS","Segoe UI",system-ui,sans-serif;font-size:18px;line-height:1.6;color:var(--ink);background:linear-gradient(120deg,#ffd6e8,#e3d4ff,#ffe3d1,#cfeeff,#fff3b8,#ffd6e8);background-size:400% 400%;animation:bg 28s ease infinite;overflow-x:hidden}
+@keyframes bg{50%{background-position:100% 50%}}
+h1,h2,h3{font-family:"Lilita One","Chewy","Trebuchet MS",system-ui,sans-serif;font-weight:400;letter-spacing:.01em;line-height:1.1}
+h2{font-size:clamp(2rem,6vw,3.1rem);color:var(--pu);text-shadow:3px 3px 0 #fff,5px 5px 0 var(--pe);margin-bottom:8px}
+h1{font-size:clamp(2.4rem,9vw,5.2rem);color:var(--rd);text-shadow:3px 3px 0 #fff,6px 6px 0 #ffc2d9}
+section{position:relative;max-width:960px;margin:auto;padding:90px 16px 70px;text-align:center}
+.sub{margin-bottom:24px;font-size:1.05rem}
+.card{position:relative;z-index:2;background:#fffaf1;border:3px solid var(--ink);border-radius:30px 46px 30px 46px;padding:28px 22px;box-shadow:8px 8px 0 var(--c,var(--pk))}
+.btn{font:inherit;font-weight:800;cursor:pointer;border:3px solid var(--ink);border-radius:999px;padding:13px 28px;color:#fff;background:var(--rd);text-shadow:1px 1px 0 #0003;box-shadow:0 6px 0 var(--ink);transition:transform .2s cubic-bezier(.3,1.8,.5,1),box-shadow .2s}
+.btn:hover{transform:translateY(-4px) rotate(-1.5deg) scale(1.06);box-shadow:0 10px 0 var(--ink)}
+.btn:active{transform:translateY(5px) scale(.97);box-shadow:0 1px 0 var(--ink)}
+.btn.alt{background:var(--pu);margin:6px}
+.btn:disabled{opacity:.65;cursor:default}
+@keyframes glow{50%{filter:brightness(1.12) drop-shadow(0 0 10px #ff9ccc)}}
+:focus-visible{outline:4px solid var(--yl);outline-offset:3px}
+.rv{opacity:0;transform:translateY(46px) scale(.96);transition:opacity .9s,transform .9s cubic-bezier(.2,1.2,.4,1)}
+.rv.in{opacity:1;transform:none}
+/* background FX */
+.fx{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.fl{position:absolute;bottom:-60px;animation:rise linear infinite;opacity:.8}
+@keyframes rise{to{transform:translateY(-115vh) rotate(360deg)}}
+.cloud{position:absolute;width:200px;height:60px;border-radius:60px;background:linear-gradient(#fff,#ffe3f1);opacity:.55;animation:drift linear infinite}
+.cloud:before,.cloud:after{content:"";position:absolute;background:inherit;border-radius:50%}
+.cloud:before{width:80px;height:80px;left:25px;top:-38px}.cloud:after{width:60px;height:60px;left:100px;top:-26px}
+@keyframes drift{from{transform:translateX(-300px)}to{transform:translateX(120vw)}}
+.tr{position:fixed;pointer-events:none;z-index:96;font-size:16px;animation:tr .9s forwards}
+@keyframes tr{to{transform:translateY(24px) scale(.2);opacity:0}}
+.paw{position:fixed;pointer-events:none;z-index:1;font-size:28px;opacity:.7;animation:paw 3s forwards}
+@keyframes paw{to{opacity:0;transform:scale(1.4) rotate(20deg)}}
+#cf{position:fixed;inset:0;pointer-events:none;z-index:95}
+/* pals */
+.pal{position:absolute;font-style:normal;font-size:clamp(34px,8vw,66px);pointer-events:none;z-index:3;transform:translate(calc(var(--mx,0)*1px),calc(var(--my,0)*1px));transition:transform .4s}
+.pal i{display:block;font-style:normal;animation:bob 3s ease-in-out infinite}
+.pal i.wave{animation:wave 1.4s ease-in-out infinite;transform-origin:bottom}
+.pal i.wig{animation:wig 1.6s ease-in-out infinite}
+.pal i.chase{animation:chase 2.4s ease-in-out infinite alternate}
+.pal i.blink{animation:blink 4s infinite}
+@keyframes bob{50%{transform:translateY(-12px) rotate(4deg)}}
+@keyframes wave{50%{transform:rotate(14deg) translateY(-6px)}}
+@keyframes wig{25%{transform:rotate(-9deg)}75%{transform:rotate(9deg)}}
+@keyframes chase{to{transform:translateX(34px) rotate(8deg)}}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+/* hero */
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;max-width:none;padding:130px 16px 110px}
+.hb{display:flex;flex-direction:column;align-items:center;gap:6px;border-radius:50px;padding:18px 34px;font-size:1.2rem;position:relative;z-index:3}
+.hbi{font-size:4.8rem;line-height:1;animation:beat 1.1s infinite}
+@keyframes beat{15%{transform:scale(1.25)}30%{transform:scale(1)}45%{transform:scale(1.18)}}
+.tent{font-size:1.1rem;background:#fff9;border-radius:999px;padding:6px 18px;position:relative;z-index:3}
+/* letter */
+#lt{white-space:pre-wrap;text-align:left;font:500 24px/34px Caveat,"Segoe Script","Bradley Hand",cursive}
+#lt.typing:after{content:"💗";animation:blink2 .7s infinite}
+@keyframes blink2{50%{opacity:0}}
+/* reasons */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:18px;position:relative;z-index:2}
+.flip{perspective:700px;border:0;background:none;height:160px;cursor:pointer;font:inherit;animation:bob 4s ease-in-out infinite}
+.flip:nth-child(3n){animation-delay:-1s}.flip:nth-child(3n+1){animation-delay:-2.2s}
+.in{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,1.4,.5,1)}
+.flip.on .in{transform:rotateY(180deg)}
+.fc{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:28px;backface-visibility:hidden;-webkit-backface-visibility:hidden;padding:10px;color:var(--ink)}
+.ff{font-size:3.4rem;background:radial-gradient(circle at 30% 25%,#ffd9e8,#ff9ec4);border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.fb{transform:rotateY(180deg);background:#fff4b8;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--pu);font-size:.95rem;font-weight:700;line-height:1.35;overflow:auto}
+/* game */
+#arena{position:relative;height:330px;border-radius:28px;overflow:hidden;background:linear-gradient(#bfe8ff,#ffe3f1 70%,#c8f0b5 70%);touch-action:none;cursor:ew-resize;border:4px solid #fff}
+.gh{position:absolute;left:0;top:0;font-size:28px;pointer-events:none}
+#gcat{position:absolute;bottom:2px;left:50%;font-size:54px;line-height:1;transform:translateX(-50%);pointer-events:none}
+.hud{display:flex;justify-content:center;gap:24px;margin:12px 0;font-weight:700;font-size:1.2rem}
+/* meter */
+#lm{width:min(520px,90%);height:30px;accent-color:var(--rd);cursor:pointer}
+#mb{font-size:4rem;display:inline-block;transition:transform .2s}
+.big{font-size:4rem}
+/* jar */
+#jar{position:relative;width:min(340px,92%);height:340px;margin:20px auto;border:5px solid #fff;border-radius:40px 40px 90px 90px;background:radial-gradient(circle at 30% 20%,#ffffffaa,#e8d5ff66);box-shadow:inset 0 0 40px #fff9,0 10px 40px #8e5cf044}
+#jar:before{content:"";position:absolute;left:12%;right:12%;top:-26px;height:26px;border-radius:12px 12px 0 0;background:linear-gradient(#ffb3cf,#ff6fa5);border:4px solid #fff}
+.note{position:absolute;border:0;background:none;font-size:2.2rem;cursor:pointer;animation:bob 3s ease-in-out infinite;filter:drop-shadow(0 0 8px #ffe27a)}
+.note.used{opacity:.45;filter:none}
+.say{min-height:3.4em;font-size:1.2rem;font-weight:700;position:relative;z-index:2;margin-top:10px}
+.pop{animation:pop .5s cubic-bezier(.3,1.8,.5,1)}
+@keyframes pop{from{transform:scale(.3);opacity:0}}
+/* quiz */
+.ans{display:flex;flex-wrap:wrap;justify-content:center}
+.ans .ok{background:linear-gradient(135deg,#6ee7a8,#3bb78f)}
+.ans .bad{background:linear-gradient(135deg,#ffb36b,#ff6f91)}
+/* sky */
+#sky{position:relative;height:380px;border-radius:36px;overflow:hidden;background:radial-gradient(ellipse at 50% 120%,#7b3fbf,#2a1650 60%,#120a33);border:4px solid #fff;box-shadow:0 12px 40px #2a165066}
+.star{position:absolute;border:0;background:none;font-size:2rem;cursor:pointer;animation:twk 2.4s ease-in-out infinite;filter:drop-shadow(0 0 10px #ffe27a)}
+.star.used{filter:drop-shadow(0 0 4px #fff);opacity:.6}
+@keyframes twk{50%{transform:scale(1.3) rotate(15deg)}}
+.moon{position:absolute;right:6%;top:6%;font-size:3rem;animation:bob 6s ease-in-out infinite}
+#sm{min-height:3.6em;margin-top:14px;font-weight:700;font-size:1.15rem;position:relative;z-index:2}
+#egg{border:0;background:none;font-size:1.4rem;cursor:pointer;opacity:.75;margin-top:10px;position:relative;z-index:3;animation:blink 5s infinite}
+#egg.shake{animation:wig .4s}
+/* overlays */
+.ov{position:fixed;inset:0;z-index:90;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px;text-align:center;background:radial-gradient(circle,#ffd6e8,#e3d4ff);overflow:hidden}
+.ov.dark{background:radial-gradient(circle,#4a1a7a,#120a33);color:#fff}
+.hugbear{font-size:clamp(4.5rem,21vw,11rem);white-space:nowrap;line-height:1;animation:hug 1.6s ease-in-out infinite;position:relative;z-index:3}
+@keyframes hug{0%,100%{transform:scale(.8) rotate(-4deg)}50%{transform:scale(1.15) rotate(4deg)}}
+.ov p{font-size:1.4rem;font-weight:700;position:relative;z-index:3;max-width:620px}
+.rh{position:absolute;bottom:-50px;animation:rise linear forwards;pointer-events:none;z-index:1}
+/* finale */
+#fin{max-width:none;background:linear-gradient(#ffffff00,#2a1650 25%,#120a33);color:#fff;padding-top:140px;padding-bottom:120px;overflow:hidden}
+.bigmoon{width:min(200px,50vw);aspect-ratio:1;margin:0 auto 20px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fffbe0,#ffe27a);box-shadow:0 0 60px 20px #ffe27a88,0 0 160px 60px #ffe27a33;animation:bob 6s ease-in-out infinite}
+#fin h2{color:#ffe27a;max-width:760px;margin:20px auto;font-size:clamp(1.8rem,5vw,2.8rem)}
+.duo{font-size:clamp(4rem,16vw,7rem);position:relative;z-index:3}
+.lan{position:absolute;bottom:-60px;font-size:2.4rem;animation:rise linear infinite;filter:drop-shadow(0 0 14px #ffb347)}
+.mus{position:fixed;right:12px;bottom:12px;z-index:75;padding:10px 16px;font-size:.95rem}
+.twinkle{position:absolute;color:#fff;animation:twk 3s infinite}
+.bunt{position:absolute;top:0;left:0;right:0;height:46px;z-index:4;pointer-events:none;transform-origin:top;animation:sway 5s ease-in-out infinite;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='46'%3E%3Cpath d='M2 4h46L25 40z' fill='%23ff6fa5' stroke='%233b1f4d' stroke-width='2'/%3E%3Cpath d='M50 4h46L73 40z' fill='%238e5cf0' stroke='%233b1f4d' stroke-width='2'/%3E%3Cpath d='M98 4h46l-23 36z' fill='%23ffe27a' stroke='%233b1f4d' stroke-width='2'/%3E%3Cpath d='M146 4h46l-23 36z' fill='%236ec8ff' stroke='%233b1f4d' stroke-width='2'/%3E%3Cpath d='M194 4h44l-22 36z' fill='%23ffb38a' stroke='%233b1f4d' stroke-width='2'/%3E%3Cpath d='M0 4h240' stroke='%233b1f4d' stroke-width='4'/%3E%3C/svg%3E") repeat-x}
+@keyframes sway{50%{transform:skewX(-1.2deg)}}
+section:nth-of-type(5n+1){--c:#ff6fa5}section:nth-of-type(5n+2){--c:#8e5cf0}section:nth-of-type(5n+3){--c:#6ec8ff}section:nth-of-type(5n+4){--c:#ffb38a}section:nth-of-type(5n){--c:#ffe27a}
+.pal{font-weight:400}.duo .pal{font-size:inherit}#fin h2,#fin p,#fin .duo{position:relative;z-index:3}#fin h2{text-shadow:2px 2px 0 #7b3fbf}.lan{z-index:1;opacity:.85}
+.hp1{left:5%;top:72px}.hp2{right:5%;top:72px}.hp3{left:4%;bottom:5%}.hp4{right:4%;bottom:5%}
+.paper{background:#fffdf5 repeating-linear-gradient(transparent 0 33px,#ffc2d977 33px 34px)}
+.cap{font-family:"Lilita One",sans-serif;font-size:1.5rem;color:#ffb3cf;position:relative;z-index:3}
+.mus{background:var(--pu);padding:9px 14px;font-size:.9rem}
+@media(max-width:600px){body{font-size:17px}.hb{padding:12px 22px;font-size:1.05rem}.hbi{font-size:3.4rem}h1{text-shadow:2px 2px 0 #fff,4px 4px 0 #ffc2d9}.pal{font-size:30px}section{padding:84px 14px 60px}.card{padding:22px 16px;box-shadow:6px 6px 0 var(--c,var(--pk))}.grid{grid-template-columns:repeat(2,1fr);gap:14px}#sky{height:340px}.hud{gap:14px}.mus{right:8px;bottom:8px}#lt{font-size:22px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="bunt" aria-hidden="true"></div>
+<noscript><p style="padding:30px;text-align:center">Please turn on JavaScript to enter the Love Carnival 💖</p></noscript>
+<div class="fx" id="fx" aria-hidden="true"></div>
+<canvas id="cf" aria-hidden="true"></canvas>
+<button class="btn mus" id="mus" aria-pressed="false">🔇 Music off</button>
+
+<section id="hero">
+  <b class="pal hp1" data-e="🧸" data-a="wave"></b>
+  <b class="pal hp2" data-e="🐱" data-a="wig"></b>
+  <b class="pal hp3" data-e="🧸💞🧸" data-a="bob"></b>
+  <b class="pal hp4" data-e="🐈🧶" data-a="chase"></b>
+  <p class="tent">🎪 Welcome to the Love Carnival 🎠</p>
+  <h1>For the most beautiful girl in my universe 💖</h1>
+  <p class="sub" style="position:relative;z-index:3">Made with love for <strong data-her></strong>, by <strong data-me></strong></p>
+  <button class="btn hb" id="enter"><span class="hbi" aria-hidden="true">💖</span>Enter Our Little World</button>
+</section>
+
+<section id="letter" class="rv">
+  <b class="pal" data-e="🧸💌" data-a="wave" style="left:2%;top:20px"></b>
+  <b class="pal" data-e="🐱" data-a="blink" style="right:3%;top:20px"></b>
+  <h2>A Little Letter For You 💌</h2>
+  <p class="sub">Read slowly, okay?</p>
+  <div class="card paper"><p id="lt" aria-live="off"></p></div>
+</section>
+
+<section id="reasons" class="rv">
+  <b class="pal" data-e="🐈‍⬛" data-a="wig" style="right:3%;top:20px"></b>
+  <b class="pal" data-e="🧸💖" data-a="bob" style="left:2%;top:20px"></b>
+  <h2>12 Reasons I Love You 💗</h2>
+  <p class="sub">Tap a heart to flip it open.</p>
+  <div class="grid" id="rg"></div>
+</section>
+
+<section id="gamesec" class="rv">
+  <b class="pal" data-e="🧶🐱" data-a="chase" style="left:2%;top:20px"></b>
+  <b class="pal" data-e="🧸" data-a="wave" style="right:3%;top:20px"></b>
+  <h2>Help Jungli Billi Catch Hearts 🐱</h2>
+  <p class="sub">Slide your finger or mouse (or use ← → keys) to move the cat. Catch as many hearts as you can in 30 seconds!</p>
+  <div class="card">
+    <div class="hud"><span>💖 Score: <span id="score">0</span></span><span>⏰ Time: <span id="time">30</span></span></div>
+    <div id="arena" tabindex="0" aria-label="Cat game arena. Use left and right arrow keys to move."><span id="gcat" aria-hidden="true">🐱</span></div>
+    <p class="say" id="gmsg" aria-live="polite">Press start when you're ready!</p>
+    <button class="btn" id="gstart">Start Game 🎮</button>
+  </div>
+</section>
+
+<section id="metersec" class="rv">
+  <b class="pal" data-e="🐱💤" data-a="bob" style="right:3%;top:20px"></b>
+  <b class="pal" data-e="🧸" data-a="wig" style="left:2%;top:20px"></b>
+  <h2>The Love Meter 📏</h2>
+  <p class="sub">Drag the slider to see how much I love you.</p>
+  <div class="card">
+    <div id="mb" aria-hidden="true">🧸</div>
+    <p style="font-size:2.4rem;font-weight:700;color:var(--rd)"><span id="mv">0</span>%</p>
+    <label for="lm" style="display:block;margin-bottom:8px">How much does <span data-me></span> love <span data-her></span>?</label>
+    <input type="range" id="lm" min="0" max="100" value="0">
+    <p class="say" id="mm" aria-live="polite">Start dragging… 💞</p>
+  </div>
+</section>
+
+<section id="jarsec" class="rv">
+  <b class="pal" data-e="🐱" data-a="blink" style="left:2%;top:20px"></b>
+  <b class="pal" data-e="🧸✨" data-a="wave" style="right:3%;top:20px"></b>
+  <h2>Our Jar of Us 🫙</h2>
+  <p class="sub">Tap a glowing note.</p>
+  <div class="card">
+    <div id="jar"></div>
+    <p class="say" id="jm" aria-live="polite">Pick a note ✨</p>
+  </div>
+</section>
+
+<section id="fortune" class="rv">
+  <b class="pal" data-e="🔮🐈" data-a="wig" style="left:2%;top:20px"></b>
+  <b class="pal" data-e="🧸" data-a="bob" style="right:3%;top:20px"></b>
+  <h2>Today's Love Fortune 🔮</h2>
+  <div class="card">
+    <p class="say" id="fm" aria-live="polite" style="font-size:1.5rem;min-height:4em">Press the button to see what the stars say…</p>
+    <button class="btn" id="fb2">Reveal my fortune ✨</button>
+  </div>
+</section>
+
+<section id="quizsec" class="rv">
+  <b class="pal" data-e="🧸🎓" data-a="wave" style="right:3%;top:20px"></b>
+  <b class="pal" data-e="🐱" data-a="wig" style="left:2%;top:20px"></b>
+  <h2>How Well Do You Know Us? 🎀</h2>
+  <p class="sub">No wrong answers, only extra cuddles.</p>
+  <div class="card" id="quiz"></div>
+</section>
+
+<section id="hugsec" class="rv">
+  <b class="pal" data-e="🧸" data-a="wave" style="left:2%;top:20px"></b>
+  <b class="pal" data-e="🐈" data-a="bob" style="right:3%;top:20px"></b>
+  <h2>Need a Hug? 🤗</h2>
+  <div class="card">
+    <p class="sub">Press the button and I'll send one right away.</p>
+    <button class="btn" id="hugb">Send Me a Hug 🧸</button>
+  </div>
+</section>
+
+<section id="skysec" class="rv">
+  <b class="pal" data-e="🐈‍⬛🌙" data-a="bob" style="left:2%;top:20px"></b>
+  <h2>Our Night Sky 🌌</h2>
+  <p class="sub">Every star holds a secret. Found: <span id="sc">0</span>/<span id="st">0</span></p>
+  <div id="sky"><span class="moon" aria-hidden="true">🌙</span></div>
+  <p id="sm" aria-live="polite" style="color:var(--ink)">Tap a star ⭐</p>
+  <button id="egg" aria-label="A tiny sleeping cat. Tap it three times to find a secret.">😽💤</button>
+</section>
+
+<section id="fin">
+  <div class="twinkle" style="left:10%;top:60px">✨</div><div class="twinkle" style="right:12%;top:120px;animation-delay:-1s">⭐</div><div class="twinkle" style="left:22%;top:260px;animation-delay:-2s">✨</div>
+  <div class="bigmoon" aria-hidden="true"></div>
+  <div class="duo" aria-hidden="true"><span class="pal" style="position:static;display:inline-block"><i class="wig">🐈</i></span><span class="pal" style="position:static;display:inline-block"><i class="bob">🧸</i></span></div>
+  <p class="cap">Mini Ibi &amp; Jungli Billi</p>
+  <h2 id="fh"></h2>
+  <p>Forever yours, <strong data-me></strong> 💖</p>
+</section>
+
+<div class="ov" id="hugov" role="dialog" aria-modal="true" aria-label="Hug delivered" hidden>
+  <div class="hugbear" aria-hidden="true">🧸💞</div>
+  <p id="hugm"></p>
+  <button class="btn" data-close>Aww, thank you 💞</button>
+</div>
+<div class="ov dark" id="forov" role="dialog" aria-modal="true" aria-label="Forever and Always room" hidden>
+  <h2 style="color:#ffe27a;font-size:clamp(2.4rem,9vw,4.5rem);position:relative;z-index:3">Forever &amp; Always 💞</h2>
+  <div class="hugbear" aria-hidden="true">🧸💞🧸</div>
+  <p id="form"></p>
+  <button class="btn" data-close>Back to our world 🌍</button>
+</div>
+
+<script>
+/* ============ EDIT YOUR CONTENT HERE ============ */
+const C={
+  her:"Roshi",              // HER name
+  nick:"Jungli Billi",      // your nickname for her
+  me:"Ibi",                 // YOUR name
+  letter:`My dearest {her}, my {nick},
+
+I wanted to make you something that doesn't fit in a card or a text message, so I built you a whole little world instead.
+
+We met online, in a corner of the internet that suddenly felt like home. Since then, ordinary days got softer, funnier and brighter. You are my favourite person to laugh with, my favourite person to be quiet with, and my favourite hello and goodnight.
+
+Thank you for being exactly you: silly, sweet, fierce and beautiful. I'm so lucky it's me who gets to love you.
+
+Happy October 1st, my darling. Take your time, press every button, and know that every little corner of this page is full of you.
+
+Always yours,
+{me} 💖`,
+  reasons:[ // 12 reasons — edit freely
+    "Your smile fixes my worst days in about one second.",
+    "You laugh at my silly jokes (even the bad ones).",
+    "You're my jungli billi: wild, fierce and completely mine. 🐈",
+    "I feel at home whenever I'm with you.",
+    "The way you care about the little things.",
+    "You turned an online hello into my favourite story. 💻💞",
+    "Your hugs are my favourite place in the world.",
+    "You believe in me, even when I forget to.",
+    "You're beautiful inside and out.",
+    "You make me want to be my best self.",
+    "We can be completely goofy together.",
+    "Because you are simply, wonderfully, you."
+  ],
+  gameWin:"Purr-fect! Jungli billi is full of love, just like me. 😻",
+  meterDone:"Still not enough to measure how much I love you.",
+  jar:[ // random notes in the Jar of Us
+    "Inside joke: Ibi saw Roshi carrying a board twice her size across the screen. 🪧😂",
+    "Inside joke: Mini Ibi, wearing shorts while praying. 🩳🧸",
+    "Inside joke: \"meri jaisi shmart alien kahein nahi mil sakhti\" 👽 (she really said that)",
+    "Memory prompt: Remember when we met online? Who said hi first? 💻",
+    "You're the best thing that ever happened to me, jungli billi. 🐈💕",
+    "Compliment: Your smile could light up any room.",
+    "Reminder: you are loved more than all the stars in the sky.",
+    "Memory prompt: What was your favourite moment with me this year?",
+    "I'd choose you in every universe. 🌍",
+    "Tonight's job: think of me and smile. 😘"
+  ],
+  fortunes:[
+    "A surprise cuddle is destined for you today. 🧸",
+    "Someone is thinking of you right now. (It's me.) 💭",
+    "Great snacks and sweet kisses are in your future. 🍫",
+    "You will receive an extra-long hug very soon. 🤗",
+    "Today you will be told you're beautiful. Believe it! 🌸",
+    "Your smile will make someone's whole day. 😊",
+    "A cat will purr your way and bring luck. 🐈",
+    "The universe says: you deserve all the love. 🌟",
+    "A jungli billi will pounce on you with a hug today. 🐈💥"
+  ],
+  quiz:[ // q, answers a[], c = index of the correct answer (starts at 0), yes/no = replies
+    {q:"Where did we meet?",a:["At school 🏫","Online 💻","At a wedding 💍","In a bookstore 📚"],c:1,yes:"Yesss! Online, where my favourite story began. 🥰",no:"Not quite! We met online. Now you owe me a hug. 💻🧸"},
+    {q:"What do I call you?",a:["Cutie 🐻","Princess 👑","Jungli Billi 🐈","Sunshine ☀️"],c:2,yes:"Correct! My one and only jungli billi. 🐈💕",no:"Oops! It's jungli billi. Hiss, then hug. 😼"},
+    {q:"What was Roshi carrying across the screen, twice her size?",a:["A giant pizza 🍕","A board 🪧","A suitcase 🧳","A teddy bear 🧸"],c:1,yes:"Yes! The legendary board. I still laugh about it. 😂",no:"It was a board twice her size! Iconic. 🪧😂"},
+    {q:"Who is Mini Ibi?",a:["A tiny robot 🤖","Ibi as a kid, wearing shorts while praying 🩳","Roshi's cat 🐈","A cartoon character 📺"],c:1,yes:"Mini Ibi, immortalised forever. 🩳😂",no:"Mini Ibi is little me in shorts, praying. Never forget. 🩳🧸"},
+    {q:"Which line did Roshi say?",a:["\"Meri jaisi shmart alien kahein nahi mil sakhti\" 👽","\"I'm never going to be late again\" ⏰","\"Pizza is my love language\" 🍕","\"Ibi is always right\" 😏"],c:0,yes:"Exactly. Smartest alien in the galaxy. 👽💖",no:"It was the alien line, word for word. Hall of fame. 👽"},
+    {q:"How much do I love you?",a:["A lot 💕","More than a lot 💖","To the moon 🌙","Infinity and beyond ♾️"],c:3,yes:"Right! And then some more. ♾️",no:"Nope, the answer is infinity and beyond. 😘"}
+  ],
+  quizWin:"Perfect score! You know us better than anyone. 🏆💞",
+  quizEnd:"Every answer was right in my heart. I love you anyway. 💞",
+  stars:[ // little messages hidden in the stars (9)
+    "I counted every star, and you outshine them all. ⭐",
+    "You're my wish come true. 🌠",
+    "Of all the places on the internet, I'm so glad I found you. 💻",
+    "I love you more than the moon loves the night. 🌙",
+    "Your laugh is my favourite sound.",
+    "I'm always on your side.",
+    "Thank you for being you, jungli billi. 🐈",
+    "Look up tonight — I'm thinking of you.",
+    "You are my favourite constellation. ✨"
+  ],
+  hug:"Hug successfully delivered to {me} 🧸💞",
+  forever:"Every version of the universe, in every lifetime, I would still find you and love you. Forever & always. 💍💖",
+  finale:"October 1 was just another day… until it became a day to remind you how deeply loved you are."
+};
+/* ================================================ */
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],R=a=>a[Math.random()*a.length|0];
+const f=s=>s.replace(/\{her\}/g,C.her).replace(/\{me\}/g,C.me).replace(/\{nick\}/g,C.nick);
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+$$('[data-her]').forEach(e=>e.textContent=C.her);$$('[data-me]').forEach(e=>e.textContent=C.me);
+$('#fh').textContent=C.finale;
+
+/* pals */
+$$('.pal[data-e]').forEach(p=>{p.setAttribute('aria-hidden','true');p.innerHTML='<i class="'+p.dataset.a+'">'+p.dataset.e+'</i>'});
+
+/* floating background */
+(()=>{const fx=$('#fx'),E=['💖','✨','⭐','🌸','💗','🌷','💫','🌟','🌺'];
+for(let i=0;i<26;i++){const s=document.createElement('span');s.className='fl';s.textContent=R(E);
+s.style.cssText=`left:${Math.random()*100}%;font-size:${12+Math.random()*22}px;animation-duration:${14+Math.random()*20}s;animation-delay:-${Math.random()*30}s`;fx.appendChild(s)}
+for(let i=0;i<4;i++){const c=document.createElement('div');c.className='cloud';c.style.cssText=`top:${5+i*22}%;animation-duration:${70+i*25}s;animation-delay:-${i*20}s;transform:scale(${.7+Math.random()*.7})`;fx.appendChild(c)}})();
+
+/* cursor trail, pal reaction, paw prints */
+(()=>{let lt=0,ls=0;
+addEventListener('pointermove',e=>{
+const r=document.documentElement.style;r.setProperty('--mx',((e.clientX/innerWidth-.5)*22).toFixed(1));r.setProperty('--my',((e.clientY/innerHeight-.5)*14).toFixed(1));
+const n=performance.now();if(reduce||n-lt<60)return;lt=n;
+const s=document.createElement('span');s.className='tr';s.textContent=R(['💖','✨','💗','⭐']);s.style.left=e.clientX+'px';s.style.top=e.clientY+'px';document.body.appendChild(s);setTimeout(()=>s.remove(),900)});
+addEventListener('scroll',()=>{if(reduce||Math.abs(scrollY-ls)<200)return;ls=scrollY;
+const p=document.createElement('span');p.className='paw';p.textContent='🐾';p.style.left=(5+Math.random()*88)+'%';p.style.top=(15+Math.random()*70)+'%';document.body.appendChild(p);setTimeout(()=>p.remove(),3000)},{passive:true})})();
+
+/* confetti + fireworks */
+const cv=$('#cf'),cx=cv.getContext('2d');let P=[],run=0;
+function sz(){cv.width=innerWidth;cv.height=innerHeight}sz();addEventListener('resize',sz);
+function burst(x,y,n=60){const E=['💖','✨','🎉','⭐','🌸'],K=['#ff6fa5','#8e5cf0','#ffb38a','#ff4d6d','#6ec8ff','#ffe27a'];
+for(let i=0;i<n;i++){const a=Math.random()*6.28,s=3+Math.random()*7;P.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-3,l:90+Math.random()*50,e:i%3?null:R(E),c:R(K),z:6+Math.random()*8})}
+if(!run){run=1;requestAnimationFrame(tick)}}
+function tick(){cx.clearRect(0,0,cv.width,cv.height);P=P.filter(p=>p.l>0);
+P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.15;p.vx*=.99;p.l--;cx.globalAlpha=Math.min(1,p.l/30);
+if(p.e){cx.font=p.z*2+'px serif';cx.fillText(p.e,p.x,p.y)}else{cx.fillStyle=p.c;cx.fillRect(p.x,p.y,p.z,p.z*.6)}});
+cx.globalAlpha=1;if(P.length)requestAnimationFrame(tick);else{run=0;cx.clearRect(0,0,cv.width,cv.height)}}
+function fireworks(){for(let i=0;i<6;i++)setTimeout(()=>burst(innerWidth*(.15+Math.random()*.7),innerHeight*(.15+Math.random()*.45),70),i*350)}
+
+/* scroll reveal */
+(()=>{const els=$$('.rv');if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}
+const io=new IntersectionObserver(en=>en.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});els.forEach(e=>io.observe(e))})();
+
+/* hero */
+$('#enter').onclick=()=>{const r=$('#enter').getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,90);setTimeout(()=>$('#letter').scrollIntoView({behavior:reduce?'auto':'smooth'}),500)};
+
+/* letter typewriter */
+(()=>{const el=$('#lt'),txt=f(C.letter);let done=0;
+function go(){if(done)return;done=1;el.textContent=txt;el.style.minHeight=el.offsetHeight+'px';if(reduce)return;el.textContent='';el.classList.add('typing');let i=0;
+const t=setInterval(()=>{el.textContent=txt.slice(0,++i);if(i>=txt.length){clearInterval(t);el.classList.remove('typing')}},32)}
+if('IntersectionObserver' in window){const o=new IntersectionObserver(e=>{if(e[0].isIntersecting){go();o.disconnect()}},{threshold:.3});o.observe(el)}else go()})();
+
+/* reasons */
+(()=>{const g=$('#rg');C.reasons.forEach((r,i)=>{const b=document.createElement('button');b.className='flip';b.setAttribute('aria-pressed','false');b.setAttribute('aria-label','Reason '+(i+1)+', tap to reveal');
+b.innerHTML='<span class="in"><span class="fc ff" aria-hidden="true">'+R(['💖','💗','💓','💝','💕'])+'</span><span class="fc fb">'+f(r)+'</span></span>';
+b.onclick=()=>{const on=b.classList.toggle('on');b.setAttribute('aria-pressed',on);if(on){const q=b.getBoundingClientRect();burst(q.left+q.width/2,q.top+q.height/2,14)}};g.appendChild(b)})})();
+
+/* game */
+(()=>{const ar=$('#arena'),cat=$('#gcat'),sc=$('#score'),tm=$('#time'),st=$('#gstart'),msg=$('#gmsg');
+let on=0,score=0,t=30,cxp=.5,hs=[],sp=0,timer;
+const place=()=>cat.style.left=cxp*100+'%';
+const setX=x=>{const r=ar.getBoundingClientRect();cxp=Math.max(.06,Math.min(.94,(x-r.left)/r.width));place()};
+ar.addEventListener('pointermove',e=>setX(e.clientX));ar.addEventListener('pointerdown',e=>setX(e.clientX));
+ar.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')cxp=Math.max(.06,cxp-.07);else if(e.key==='ArrowRight')cxp=Math.min(.94,cxp+.07);else return;e.preventDefault();place()});
+function loop(ts){if(!on)return;const w=ar.clientWidth,h=ar.clientHeight;
+if(ts-sp>650){sp=ts;const e=document.createElement('span');e.className='gh';e.textContent=R(['💖','💗','💝','💕']);e.x=.08+Math.random()*.84;e.y=-30;e.v=2+Math.random()*2.2;ar.appendChild(e);hs.push(e)}
+hs=hs.filter(e=>{e.y+=e.v;e.style.transform='translate('+(e.x*w-14)+'px,'+e.y+'px)';
+if(e.y>h-75&&e.y<h-15&&Math.abs(e.x-cxp)<.11){score++;sc.textContent=score;e.remove();cat.textContent='😻';setTimeout(()=>cat.textContent='🐱',250);return false}
+if(e.y>h){e.remove();return false}return true});requestAnimationFrame(loop)}
+function end(){on=0;clearInterval(timer);hs.forEach(e=>e.remove());hs=[];st.disabled=false;st.textContent='Play Again 🔁';
+msg.textContent='You caught '+score+' hearts! '+(score>=12?f(C.gameWin):'Kitty loves you anyway! 😽');const r=ar.getBoundingClientRect();burst(r.left+r.width/2,r.top+r.height/2,score>=12?160:70);if(score>=12)fireworks()}
+st.onclick=()=>{score=0;t=30;sc.textContent=0;tm.textContent=30;msg.textContent='Go go go! 🐾';st.disabled=true;on=1;sp=0;ar.focus({preventScroll:true});
+timer=setInterval(()=>{tm.textContent=--t;if(t<=0)end()},1000);requestAnimationFrame(loop)}})();
+
+/* love meter */
+(()=>{const s=$('#lm'),v=$('#mv'),m=$('#mm'),b=$('#mb');let fired=0;
+s.oninput=()=>{const n=+s.value;v.textContent=n;b.style.transform='scale('+(1+n/60)+')';b.textContent=n<30?'🧸':n<60?'🥰':n<100?'😍':'🧸💖';
+m.textContent=n<30?'Just warming up… 💞':n<60?'Getting warmer! 💗':n<100?'Almost there… keep going! 💓':f(C.meterDone);
+if(n===100&&!fired){fired=1;m.classList.add('pop');fireworks();burst(innerWidth/2,innerHeight/2,200)}if(n<100){fired=0;m.classList.remove('pop')}}})();
+
+/* jar */
+(()=>{const j=$('#jar'),m=$('#jm'),pos=[[18,12],[55,8],[35,28],[68,30],[12,45],[48,48],[75,55],[28,66],[60,72],[42,86]],E=['📜','💌','✨','💛','📝'];
+pos.forEach((p,i)=>{const b=document.createElement('button');b.className='note';b.textContent=E[i%E.length];b.style.cssText='left:'+p[0]+'%;top:'+p[1]+'%;animation-delay:-'+(i*.4)+'s';b.setAttribute('aria-label','Open note '+(i+1));
+b.onclick=()=>{b.classList.add('used');m.textContent=f(R(C.jar));m.classList.remove('pop');void m.offsetWidth;m.classList.add('pop');const r=b.getBoundingClientRect();burst(r.left+20,r.top+20,16)};j.appendChild(b)})})();
+
+/* fortune */
+$('#fb2').onclick=function(){const m=$('#fm');m.textContent=f(R(C.fortunes));m.classList.remove('pop');void m.offsetWidth;m.classList.add('pop');const r=this.getBoundingClientRect();burst(r.left+r.width/2,r.top,40)};
+
+/* quiz */
+(()=>{let i=0,s=0;const q=$('#quiz'),n=C.quiz.length;
+function show(){if(i>=n){q.innerHTML='<div class="big">'+(s===n?'🏆':'💞')+'</div><h3 style="font-size:2.4rem">'+s+' / '+n+'</h3><p class="say">'+f(s===n?C.quizWin:C.quizEnd)+'</p><button class="btn" id="qr">Play again 🔁</button>';
+$('#qr').onclick=()=>{i=0;s=0;show()};burst(innerWidth/2,innerHeight/2,s===n?150:60);return}
+const x=C.quiz[i];q.innerHTML='<p>Question '+(i+1)+' of '+n+'</p><h3 style="font-size:1.9rem;margin:8px 0 14px">'+f(x.q)+'</h3><div class="ans">'+x.a.map((a,k)=>'<button class="btn alt" data-k="'+k+'">'+a+'</button>').join('')+'</div><p class="say" id="qf" aria-live="polite"></p>';
+$$('#quiz .ans button').forEach(b=>b.onclick=()=>{const k=+b.dataset.k,ok=k===x.c;if(ok)s++;
+$$('#quiz .ans button').forEach(z=>{z.disabled=true;if(+z.dataset.k===x.c)z.classList.add('ok')});if(!ok)b.classList.add('bad');
+const fq=$('#qf');fq.textContent=(ok?'🎉 ':'🙈 ')+f(ok?x.yes:x.no);fq.classList.add('pop');
+const nx=document.createElement('button');nx.className='btn';nx.textContent=i+1<n?'Next question 👉':'See my result 🎁';nx.onclick=()=>{i++;show()};q.appendChild(nx);nx.focus({preventScroll:true});
+const r=b.getBoundingClientRect();burst(r.left+r.width/2,r.top,ok?40:20)})}
+show()})();
+
+/* overlays */
+let lastFocus=null;
+function rain(o,n){$$('#'+o.id+' .rh').forEach(e=>e.remove());for(let i=0;i<n;i++){const s=document.createElement('span');s.className='rh';s.textContent=R(['💖','💗','💕','🧸','✨','💞']);
+s.style.cssText='left:'+Math.random()*100+'%;font-size:'+(18+Math.random()*30)+'px;animation-duration:'+(4+Math.random()*5)+'s;animation-delay:'+Math.random()*3+'s';o.appendChild(s)}}
+function openOv(id){const o=$(id);lastFocus=document.activeElement;o.hidden=false;document.body.style.overflow='hidden';rain(o,28);o.querySelector('[data-close]').focus();fireworks()}
+function closeOv(o){o.hidden=true;document.body.style.overflow='';if(lastFocus)lastFocus.focus()}
+$$('.ov').forEach(o=>o.querySelector('[data-close]').onclick=()=>closeOv(o));
+addEventListener('keydown',e=>$$('.ov').forEach(o=>{if(o.hidden)return;if(e.key==='Escape')closeOv(o);else if(e.key==='Tab'){e.preventDefault();o.querySelector('[data-close]').focus()}}));
+$('#hugm').textContent=f(C.hug);$('#form').textContent=f(C.forever);
+$('#hugb').onclick=()=>openOv('#hugov');
+
+/* night sky + easter egg */
+(()=>{const sky=$('#sky'),m=$('#sm');let found=0;const pos=[[10,18],[26,55],[38,20],[52,70],[62,35],[76,62],[86,22],[20,80],[70,85]];
+$('#st').textContent=C.stars.length;
+C.stars.forEach((t,i)=>{const p=pos[i%pos.length],b=document.createElement('button');b.className='star';b.textContent='⭐';b.setAttribute('aria-label','Star '+(i+1));
+b.style.cssText='left:'+p[0]+'%;top:'+p[1]+'%;animation-delay:-'+(i*.5)+'s';
+b.onclick=()=>{m.textContent=f(t);m.classList.remove('pop');void m.offsetWidth;m.classList.add('pop');if(!b.classList.contains('used')){b.classList.add('used');found++;$('#sc').textContent=found;if(found===C.stars.length){m.textContent+=' 🌌 You found every star!';fireworks()}}const r=b.getBoundingClientRect();burst(r.left+16,r.top+16,18)};sky.appendChild(b)});
+let c=0;const egg=$('#egg');egg.onclick=()=>{c++;egg.classList.remove('shake');void egg.offsetWidth;egg.classList.add('shake');if(c>=3){c=0;openOv('#forov')}}})();
+
+/* finale lanterns */
+(()=>{const s=$('#fin');for(let i=0;i<12;i++){const l=document.createElement('span');l.className='lan';l.setAttribute('aria-hidden','true');l.textContent='🏮';
+l.style.cssText='left:'+(4+i*8)+'%;animation-duration:'+(12+Math.random()*10)+'s;animation-delay:-'+Math.random()*14+'s;font-size:'+(1.6+Math.random()*1.4)+'rem';s.appendChild(l)}})();
+
+/* music (soft synth, off by default) */
+(()=>{let ac,on=0,n=0,mt;const sc=[261.6,329.6,392,523.3,392,329.6,293.7,392];
+function note(){const o=ac.createOscillator(),g=ac.createGain(),t=ac.currentTime;o.type='sine';o.frequency.value=sc[n++%sc.length];g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.05,t+.05);g.gain.exponentialRampToValueAtTime(.001,t+1.3);o.connect(g);g.connect(ac.destination);o.start(t);o.stop(t+1.4)}
+$('#mus').onclick=function(){on=!on;if(on){try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();ac.resume();note();mt=setInterval(note,650)}catch(e){on=0}}else clearInterval(mt);
+this.setAttribute('aria-pressed',on?'true':'false');this.textContent=on?'🔊 Music on':'🔇 Music off'}})();
+</script>
+</body>
+</html>
